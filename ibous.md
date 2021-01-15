@@ -4,15 +4,20 @@
 # error server 
 once user are connected, the server always redirect on account/login but the user are so connected, so the session id of any user change
 everytime, all only
-
+```
 <b>Warning</b>:  session_start(): open(/opt/alt/php72/var/lib/php/session/sess_a150685c822e9f5be519db002b1cf296, O_RDWR) failed: Disk quota exceeded (122) in <b>/home/achtel9/public_html/ibous.com/home/index.php</b> on line <b>10</b><br />
 <br />
 <b>Warning</b>:  session_start(): Failed to read session data: files (path: /opt/alt/php72/var/lib/php/session) in <b>/home/achtel9/public_html/ibous.com/home/index.php</b> on line <b>10</b><br />
+```
+LOW STORAGE DISK
 
 # waf scan
+```
 [-] No WAF detected by the generic detection
+```
 
-# nmap scan 
+# nmap scan
+```
 21/tcp   open  ftp        Pure-FTPd
 22/tcp   open  ssh        OpenSSH 5.3 (protocol 2.0)
 25/tcp   open  smtp?
@@ -25,19 +30,23 @@ everytime, all only
 993/tcp  open  ssl/imaps?
 995/tcp  open  ssl/pop3s?
 3306/tcp open  mysql      MySQL 5.6.49-cll-lve
+```
 
 # remark
-
+```
 strip_tags, filter php
 htmlentities also
 control JS for input
 SQLMAP doesn't work
 form no-response with invalid varible 
 Burpsuite inspecting 
-# Webmaster
+```
+##  AddressWebmaster
 webmaster@ibous.achtel9.ibous.com
 
+
 # dirb
+```
 + http://www.ibous.com/.htaccess (CODE:403|SIZE:318)                                                                                                                 
 + http://www.ibous.com/.htpasswd (CODE:403|SIZE:318)                                                                                                                 
 ==> DIRECTORY: http://www.ibous.com/account/                                                                                                                         
@@ -81,10 +90,17 @@ webmaster@ibous.achtel9.ibous.com
 + http://www.ibous.com/robots.txt (CODE:200|SIZE:238)                                                                                                                
 + http://www.ibous.com/signup (CODE:200|SIZE:51397)                                                                                                                  
 + http://www.ibous.com/sitemap.xml (CODE:200|SIZE:2502) 
+```
  
-*PANEL ADMIN :* https://www.ibous.com/cpanel-admin/login
+*PANEL ADMIN :*
+____________________________________________________
+| adress | https://www.ibous.com/cpanel-admin/login |
+----------------------------------------------------
+
 # vulnerable
+
 1. 21/tcp   open  ftp        Pure-FTPd
+```
 |_clamav-exec: ERROR: Script execution failed (use -d to debug)
 | ftp-libopie: 
 |   VULNERABLE:
@@ -95,11 +111,14 @@ webmaster@ibous.achtel9.ibous.com
 |       An off-by-one error in OPIE library 2.4.1-test1 and earlier, allows remote
 |       attackers to cause a denial of service or possibly execute arbitrary code
 |       via a long username.
+```
 
 2. 80/tcp   open  http       Apache httpd
+```
 |_http-vuln-cve2014-3704
-
+```
 3. 143 & 110/tcp  open  pop3       Dovecot pop3d
+```
 | ssl-dh-params: 
 |   VULNERABLE:
 |   Diffie-Hellman Key Exchange Insufficient Group Strength
@@ -107,6 +126,11 @@ webmaster@ibous.achtel9.ibous.com
 |       Transport Layer Security (TLS) services that use Diffie-Hellman groups
 |       of insufficient strength, especially those using one of a few commonly
 |       shared groups, may be susceptible to passive eavesdropping attacks.
+```
 
 4. 3306/tcp open  mysql      MySQL 5.6.49-cll-lve
+```
 |_mysql-vuln-cve2012-2122
+```
+
+MORE DETAILS, PLEASE CALL ME OR WRITE ME
