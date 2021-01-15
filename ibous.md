@@ -94,12 +94,7 @@ webmaster@ibous.achtel9.ibous.com
 ```
  
 *PANEL ADMIN :*
-----------------------------------------------------
-| number | link                                     |
------------------------------------------------------
-| 1      | https://www.ibous.com/cpanel-admin/login |
-----------------------------------------------------
-
+https://www.ibous.com/cpanel-admin/login
 # vulnerable
 
 1. 21/tcp   open  ftp        Pure-FTPd
@@ -109,11 +104,6 @@ webmaster@ibous.achtel9.ibous.com
 |   VULNERABLE:
 |   OPIE off-by-one stack overflow
 |     State: LIKELY VULNERABLE
-|     IDs:  BID:40403  CVE:CVE-2010-1938
-|     Risk factor: High  CVSSv2: 9.3 (HIGH) (AV:N/AC:M/Au:N/C:C/I:C/A:C)
-|       An off-by-one error in OPIE library 2.4.1-test1 and earlier, allows remote
-|       attackers to cause a denial of service or possibly execute arbitrary code
-|       via a long username.
 ```
 
 2. 80/tcp   open  http       Apache httpd
