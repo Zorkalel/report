@@ -1,4 +1,6 @@
-## Write ups VULN
+# REPORT LEVEL 1
+
+## HOST
 1. ip address : 107.180.47.12
 
 # error server 
@@ -9,7 +11,7 @@ everytime, all only
 <br />
 <b>Warning</b>:  session_start(): Failed to read session data: files (path: /opt/alt/php72/var/lib/php/session) in <b>/home/achtel9/public_html/ibous.com/home/index.php</b> on line <b>10</b><br />
 ```
-LOW STORAGE DISK
+**LOW STORAGE DISK**
 
 # waf scan
 ```
@@ -88,13 +90,14 @@ webmaster@ibous.achtel9.ibous.com
 ==> DIRECTORY: http://www.ibous.com/pipermail/                                                                                                                       
 ==> DIRECTORY: http://www.ibous.com/product/                                                                                                                         
 + http://www.ibous.com/robots.txt (CODE:200|SIZE:238)                                                                                                                
-+ http://www.ibous.com/signup (CODE:200|SIZE:51397)                                                                                                                  
-+ http://www.ibous.com/sitemap.xml (CODE:200|SIZE:2502) 
+
 ```
  
 *PANEL ADMIN :*
-____________________________________________________
-| adress | https://www.ibous.com/cpanel-admin/login |
+----------------------------------------------------
+| number | link                                     |
+-----------------------------------------------------
+| 1      | https://www.ibous.com/cpanel-admin/login |
 ----------------------------------------------------
 
 # vulnerable
