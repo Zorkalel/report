@@ -13,6 +13,7 @@ Pour commencer, je dirais qu'au file de mon eenquete j'ai pu constater qu'il que
 /nice ports,/Trinity.txt.bak
 ```
 ca parait etre un fichier .bak ( un fichier de sauvegarde tres important), et souvent fois ces fichiers il faut jeter un coup d'oeil malgré ca semble un peu etre de format texte mais il faudrait y voir.
+
 ### ETAPE 2
 Ensuite dans les lignes qui suivent je dois dire qu'une suite de requete GET aussi a ete lance mais cette fois il parait que c'est avec **NMAP** ( un mapper reseau, en gros cet outil permet de faire de  l'analyse de port, services, versions et plus loin ca peut meme aider a trouver des vulnerabilites si toute fois il y en a), voyons voir un peu :
 ```
@@ -38,6 +39,8 @@ On peut voir que l'attaquant a trouver le parametre vulnerable (**/rest/products
 ###### TABLE Users
 | id| email | password |
 |---|-------|----------|
+
+
 en forme simple, ceux que l'attaquant a demandé a été sous cette forme et attention a la derniere requete effectué car il a été realisé avec l'outil *Curl* (Client Url), l'usage courant de cette outil est d'effectuer des requestes genre GET ou POST mais via la ligne de commande ou terminal il supporte un bon nombre d'autres mais si vous voulez cherchez-le. Voyons voir :
 ```
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:32:51 +0000] "GET /rest/products/search?q=qwert%27))%20UNION%20SELECT%20id,%20email,%20password,%20%274%27,%20%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27%20FROM%20Users-- HTTP/1.1" 200 3742 "-" "curl/7.74.0"
