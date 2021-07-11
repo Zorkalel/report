@@ -21,13 +21,13 @@ Ensuite dans les lignes qui suivent je dois dire qu'une suite de requete GET aus
 ```
 Dans cette requete le module NSE ( Nmap script engine, juste des petits programmes qui aident nmap a etre efficace) du nom <a href="https://nmap.org/nsedoc/scripts/http-webdav-scan.html" >WebDav</a>, permet de faire du WebScanning( analyse web, genre recherche de repertoire, fichiers, ..), faut dire que je l'ai decouvert juste parceque j'ai que le terme *PROPFIND* etait trop repeter et du coup j'ai appris que c'est une option de cette outil.
 
-### ETAPE 4
+### ETAPE 3
 Continuons plus bas on remarque une forte demande vers le systeme d'authentification , il parait que l'attaquant tentais de trouver le bon couple pour se connecter a un compte d'utilisateur que se soit root ou utilisateur a privilege requis et on peut le voir avec tous les requetes effectues et utilisait l'outil **Hydra** pour l'effectuer et faut dire que c'est un puissant outil de bruteforcage par dictionnaire ( ca signifie faire plusieurs tentatives jusqu'a en trouver le bon mais ceci avec une liste de mot specifiques, *le plus courant est le `rockyou.txt`*) Voyons voir :
 ```
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:16:29 +0000] "POST /rest/user/login HTTP/1.0" 401 26 "-" "Mozilla/5.0 (Hydra)"
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:16:31 +0000] "POST /rest/user/login HTTP/1.0" 200 831 "-" "Mozilla/5.0 (Hydra)"
 ```
-### ETAPE 5
+### ETAPE 4
 Plus bas on trouvera qu'il y avait aussi de sqli ( Sql Injection, en terme simple c'est une attaque qui permet d'extraire tous ce qui ce trouve dans une base de donnée{ que ce soit *email, password, adresse carte bancaire*, tous}) et l'outil la plus pratique et plus rapide est le fameux **SQLMAP** qui possede presque tous les types d'injections sql en forme de payload( charge utile, ca signifie une petite sequence de chaine tout pret pour effectuer ce que l'on veut) pret a l'emploi. Notre attaquant l'a utilisé. Voyons voir :
 ```
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:31:04 +0000] "GET /rest/products/search?q=qwert')) UNION SELECT id, email, password, '4', '5', '6', '7', '8', '9' FROM Users-- HTTP/1.1" 200 - "-" "Mozilla/5.0 (X11; Linux x86_64; rv:78.0) Gecko/20100101 Firefox/78.0"
@@ -45,7 +45,7 @@ en forme simple, ceux que l'attaquant a demandé a été sous cette forme et att
 ```
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:32:51 +0000] "GET /rest/products/search?q=qwert%27))%20UNION%20SELECT%20id,%20email,%20password,%20%274%27,%20%275%27,%20%276%27,%20%277%27,%20%278%27,%20%279%27%20FROM%20Users-- HTTP/1.1" 200 3742 "-" "curl/7.74.0"
 ```
-
+### ETAPE 5
 Et finallement on a *Feroxbuster* l'outil pour forcer l'accesibilite vers les repertoires et autant faire de l'enumeration avancée et ceci dit cet outil a trouver un bon nombre de ressource important pour l'attaquant. Voyons voir :
 ```
 /a54372a1404141fe8842ae5c029a00e3
