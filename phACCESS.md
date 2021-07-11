@@ -13,7 +13,6 @@ Pour commencer, je dirais qu'au file de mon eenquete j'ai pu constater qu'il que
 /nice ports,/Trinity.txt.bak
 ```
 ca parait etre un fichier .bak ( un fichier de sauvegarde tres important), et souvent fois ces fichiers il faut jeter un coup d'oeil malgré ca semble un peu etre de format texte mais il faudrait y voir.
-
 ### ETAPE 2
 Ensuite dans les lignes qui suivent je dois dire qu'une suite de requete GET aussi a ete lance mais cette fois il parait que c'est avec **NMAP** ( un mapper reseau, en gros cet outil permet de faire de  l'analyse de port, services, versions et plus loin ca peut meme aider a trouver des vulnerabilites si toute fois il y en a), voyons voir un peu :
 ```
@@ -25,7 +24,7 @@ Dans cette requete le module NSE ( Nmap script engine, juste des petits programm
 Continuons plus bas on remarque une forte demande vers le systeme d'authentification , il parait que l'attaquant tentais de trouver le bon couple pour se connecter a un compte d'utilisateur que se soit root ou utilisateur a privilege requis et on peut le voir avec tous les requetes effectues et utilisait l'outil **Hydra** pour l'effectuer et faut dire que c'est un puissant outil de bruteforcage par dictionnaire ( ca signifie faire plusieurs tentatives jusqu'a en trouver le bon mais ceci avec une liste de mot specifiques, *le plus courant est le `rockyou.txt`*) Voyons voir :
 ```
 ::ffff:192.168.10.5 - - [11/Apr/2021:09:16:29 +0000] "POST /rest/user/login HTTP/1.0" 401 26 "-" "Mozilla/5.0 (Hydra)"
-::ffff:192.168.10.5 - - [11/Apr/2021:09:16:29 +0000] "GET /rest/user/login HTTP/1.0" 500 - "-" "Mozilla/5.0 (Hydra)"
+::ffff:192.168.10.5 - - [11/Apr/2021:09:16:31 +0000] "POST /rest/user/login HTTP/1.0" 200 831 "-" "Mozilla/5.0 (Hydra)"
 ```
 ### ETAPE 5
 Plus bas on trouvera qu'il y avait aussi de sqli ( Sql Injection, en terme simple c'est une attaque qui permet d'extraire tous ce qui ce trouve dans une base de donnée{ que ce soit *email, password, adresse carte bancaire*, tous}) et l'outil la plus pratique et plus rapide est le fameux **SQLMAP** qui possede presque tous les types d'injections sql en forme de payload( charge utile, ca signifie une petite sequence de chaine tout pret pour effectuer ce que l'on veut) pret a l'emploi. Notre attaquant l'a utilisé. Voyons voir :
